@@ -9,6 +9,7 @@ import (
 	"syscall"
 	"time"
 
+	"ketsui-auth-service/internal/auth"
 	"ketsui-auth-service/internal/server"
 )
 
@@ -38,6 +39,8 @@ func gracefulShutdown(apiServer *http.Server, done chan bool) {
 }
 
 func main() {
+
+	auth.NewAuth()
 
 	server := server.NewServer()
 
