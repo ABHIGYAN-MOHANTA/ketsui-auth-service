@@ -71,7 +71,7 @@ func NewAuth() {
 	}
 
 	// Setup Google provider
-	callbackURL := "http://localhost:8080/auth/google/callback"
+	callbackURL := os.Getenv("GOOGLE_REDIRECT_URI")
 	log.Printf("Setting up Google provider with callback URL: %s", callbackURL)
 
 	goth.UseProviders(

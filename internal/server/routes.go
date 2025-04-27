@@ -112,7 +112,8 @@ func (s *Server) getAuthCallback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	redirectURL := fmt.Sprintf("http://localhost:3000?token=%s", token)
+	clientRedirectURL := os.Getenv("CLIENT_REDIRECT_URL")
+	redirectURL := fmt.Sprintf("%s?token=%s", clientRedirectURL, token)
 	log.Printf("Redirecting to: %s", redirectURL)
 	http.Redirect(w, r, redirectURL, http.StatusFound)
 }
